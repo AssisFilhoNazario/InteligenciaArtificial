@@ -1,4 +1,4 @@
-package arvorebinaria;
+
 
 public class UsarArvoreBinaria {
 	public static void main(String[] args) {
