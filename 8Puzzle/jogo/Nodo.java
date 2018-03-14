@@ -4,7 +4,7 @@ package jogo;
  * Representa um nodo da árvore de busca
  */
 
-public class Nodo implements Comparable{
+public class Nodo implements Comparable {
 
 	Estado estado; // o estado
 	Nodo pai; // o pai
@@ -108,11 +108,11 @@ public class Nodo implements Comparable{
 		try {
 			Nodo outro = (Nodo) obj;
 			if (g > outro.g) {
-				return 1; //  maior (fica depois na fila)
+				return 1; // maior (fica depois na fila)
 			} else if (g == outro.g) {
 				return 0; // sou =
 			} else {
-				return -1; //  menor
+				return -1; // menor
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();

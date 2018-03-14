@@ -1,58 +1,64 @@
 package jogo;
 
-public class MostraStatusConsole extends Thread{
-	
+public class MostraStatusConsole extends Thread {
+
 	private Status status;
-    private boolean stop = false;
-    
-    public MostraStatusConsole() {
-        start();        
-    }
-    public MostraStatusConsole(Status s) {
-        setStatus(s);
-        start();        
-    }
+	private boolean stop = false;
 
-    public Status getStatus() {
-        return status;
-    }
-    
-    public void setStatus(Status s) {
-        this.status = s;
-    }
-    
-    public void para() {
-    	if (!stop) {
-	        stop = true;
-	        interrupt();
-    	}
-    }
-    
-    public void run() {
-        while (!stop) {
-            try {
-                sleep(1000);
-                if (!stop && status != null) {
-                    mostra();
-                }
-            } catch (Exception e) {  }
-        }
-        mostraFim();
-    }
+	public MostraStatusConsole() {
+		start();
+	}
 
-    protected void mostraFim() {
-        println(": Fim da busca. "+status.nroVisitados+" nodos visitados em "+status.getTempoDecorrido()+" mili-seg.\n");        
-    }
-    protected void mostra() {
-        println("Status:");
-        println("\t"+status.nroVisitados+" nodos visitados, nodos em aberto="+status.tamAbertos);
-        println("\tProfundidade atual="+status.profundidadeMax);
-        println("\tTempo decorrido="+status.getTempoDecorrido());
-        
-    }
+	public MostraStatusConsole(Status s) {
+		setStatus(s);
+		start();
+	}
 
-    protected void println(String s) {
-        System.out.println(s);
-    }
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status s) {
+		this.status = s;
+	}
+
+	public void para() {
+		if (!stop) {
+			stop = true;
+			interrupt();
+		}
+	}
+
+	public void run() {
+		while (!stop) {
+			try {
+				sleep(1000);
+				if (!stop && status != null) {
+					mostra();
+				}
+			} catch (Exception e) {
+			}
+		}
+		mostraFim();
+	}
+
+	protected void mostraFim() {
+		println(": Fim da busca. " + status.nroVisitados
+				+ " nodos visitados em " + status.getTempoDecorrido()
+				+ " mili-seg.\n");
+	}
+
+	protected void mostra() {
+		println("Status:");
+		println("\t" + status.nroVisitados
+				+ " nodos visitados, nodos em aberto=" + status.tamAbertos);
+		println("\tProfundidade atual=" + status.profundidadeMax);
+		println("\tTempo decorrido=" + status.getTempoDecorrido());
+
+	}
+
+	protected void println(String s) {
+		System.out.println(s);
+	}
 
 }
